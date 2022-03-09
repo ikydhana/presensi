@@ -1,4 +1,4 @@
-# presensi
+# Presensi TAS
 
 Aplikasi Presensi SMKN 1 Banjarbaru
 
