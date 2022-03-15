@@ -1,5 +1,8 @@
-part of 'screens.dart';
 
+
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -30,7 +33,7 @@ class _LoginScreenState extends State<LoginScreen> {
         body: Stack(
           children: [
             Container(
-              color: screenColor,
+              color: Colors.blue,
             ),
             SafeArea(
               child: SingleChildScrollView(
@@ -59,12 +62,12 @@ class _LoginScreenState extends State<LoginScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "GoAbsensi",
-                                style: boldBlackFont.copyWith(fontSize: 24),
+                                "Presensi",
+                                style: TextStyle(fontWeight: FontWeight.bold),
                               ),
                               Text(
                                 "Modern Presence App",
-                                style: regularGreyFont.copyWith(fontSize: 12),
+                                style: TextStyle(fontWeight: FontWeight.bold),
                               ),
                             ],
                           ),
@@ -232,8 +235,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         height: 16,
                       ),
                       Text(
-                        "Secured Authentication GoAbsensi",
-                        style: regularGreyFont.copyWith(fontSize: 12),
+                        "Secured Authentication Presensi",
+                        style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                       SizedBox(
                         height: 35,
