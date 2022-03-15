@@ -5,7 +5,7 @@ class Wrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    auth.User firebaseUser = Provider.of<auth.User>(context);
+    var firebaseUser = null;
 
     if (firebaseUser == null) {
       return Scaffold(
@@ -13,12 +13,10 @@ class Wrapper extends StatelessWidget {
       );
     }
     else {
-      Provider.of<UserProvider>(context).loadUser(firebaseUser.uid);
-      Provider.of<PresenceProvider>(context).getPresence(firebaseUser.uid);
-      Provider.of<HistoryProvider>(context).loadHistory(firebaseUser.uid);
+
 
       return Scaffold(
-        body: MainScreen(),
+        //body: MainScreen(),
       );
     }
   }

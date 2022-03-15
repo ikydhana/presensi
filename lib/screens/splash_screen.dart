@@ -25,7 +25,7 @@ class _SplashScreenState extends State<SplashScreen> {
     SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
 
     return Scaffold(
-      backgroundColor: primaryColor,
+      backgroundColor: Colors.blue,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -34,15 +34,15 @@ class _SplashScreenState extends State<SplashScreen> {
               width: 130,
               height: 130,
               margin: EdgeInsets.only(bottom: 18),
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage("assets/images/secondary_logo.png"),
-                ),
-              ),
+              // decoration: BoxDecoration(
+              //   image: DecorationImage(
+              //     image: AssetImage("assets/images/secondary_logo.png"),
+              //   ),
+              //),
             ),
             Text(
               "GoAbsensi",
-              style: extraWhiteFont.copyWith(fontSize: 28),
+              style: TextStyle(fontWeight: FontWeight.bold),
             ),
           ],
         ),
