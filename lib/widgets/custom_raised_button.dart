@@ -10,7 +10,7 @@ class CustomRaisedButton extends StatelessWidget {
 
   CustomRaisedButton(
     this.text, {
-    required this.width,
+    this.width = 10,
     this.height = 48,
     required this.color,
     required this.textColor,
@@ -20,7 +20,7 @@ class CustomRaisedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: (width == null) ? defaultWidth(context) : width,
+      width: width,
       height: height,
       child: RaisedButton(
         color: color,

@@ -5,7 +5,7 @@ class CustomFilePicker extends StatelessWidget {
   final Color hintColor;
   final Function onTap;
 
-  CustomFilePicker({this.hintText, this.hintColor, this.onTap});
+  CustomFilePicker({required this.hintText, required this.hintColor, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class CustomFilePicker extends StatelessWidget {
           children: [
             Text(
               "Lampirkan File",
-              style: semiBlackFont.copyWith(fontSize: 16),
+              style: TextStyle(fontWeight: FontWeight.bold),
             ),
           ],
         ),
@@ -28,13 +28,13 @@ class CustomFilePicker extends StatelessWidget {
           borderRadius: BorderRadius.circular(8),
           child: Ink(
             decoration: BoxDecoration(
-              color: greyColor,
+              color: Colors.grey,
               borderRadius: BorderRadius.circular(8),
             ),
             child: InkWell(
-              onTap: onTap,
+              // onTap: onTap,
               child: Container(
-                width: defaultWidth(context),
+                width: 10,
                 padding: EdgeInsets.symmetric(
                   horizontal: 18,
                   vertical: 12.5,
@@ -46,7 +46,7 @@ class CustomFilePicker extends StatelessWidget {
                   children: [
                     FaIcon(
                       FontAwesomeIcons.solidFile,
-                      color: (hintText == "Pilih File") ? Color(0xFFC6C6C6) : darkColor,
+                      color: (hintText == "Pilih File") ? Color(0xFFC6C6C6) : Colors.grey,
                       size: 20,
                     ),
                     SizedBox(
@@ -54,17 +54,14 @@ class CustomFilePicker extends StatelessWidget {
                     ),
                     Text(
                       hintText,
-                      style: semiBlackFont.copyWith(
-                        fontSize: 15,
-                        color: hintColor,
-                      ),
+                      style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                     Spacer(
                       flex: 1,
                     ),
                     FaIcon(
                       (hintText == "Pilih File") ? FontAwesomeIcons.plusCircle : FontAwesomeIcons.solidWindowClose,
-                      color: (hintText == "Pilih File") ? Color(0xFFC6C6C6) : darkColor,
+                      color: (hintText == "Pilih File") ? Color(0xFFC6C6C6) : Colors.grey,
                       size: 20,
                     ),
                   ],
@@ -78,10 +75,7 @@ class CustomFilePicker extends StatelessWidget {
         ),
         Text(
           "Jenis File Yang Dibolehkan: pdf, png, jpg, docs",
-          style: semiBlackFont.copyWith(
-            color: Color(0xFFC6C6C6),
-            fontSize: 12,
-          ),
+          style: TextStyle(fontWeight: FontWeight.bold),
         ),
       ],
     );

@@ -5,7 +5,7 @@ class CustomDropdownField extends StatelessWidget {
   final String errorValidation;
   final Function(String) onChanged;
 
-  CustomDropdownField({this.errorValidation, this.onChanged});
+  CustomDropdownField({required this.errorValidation, required this.onChanged});
 
   List<String> permits = ["Sakit", "Izin", "Alfa"];
 
@@ -19,14 +19,11 @@ class CustomDropdownField extends StatelessWidget {
           children: [
             Text(
               "Jenis Izin",
-              style: semiBlackFont.copyWith(fontSize: 16),
+              style: TextStyle(fontWeight: FontWeight.bold),
             ),
             if (errorValidation != null) Text(
               errorValidation,
-              style: semiBlackFont.copyWith(
-                color: maroonColor,
-                fontSize: 12,
-              ),
+              style: TextStyle(fontWeight: FontWeight.bold),
             ),
           ],
         ),
@@ -36,14 +33,11 @@ class CustomDropdownField extends StatelessWidget {
         DropdownButtonFormField(
           hint: Text(
             "Pilih Jenis Izin",
-            style: semiGreyFont.copyWith(
-              fontSize: 15,
-              color: Color(0xFFC6C6C6),
-            ),
+            style: TextStyle(fontWeight: FontWeight.bold),
           ),
           decoration: InputDecoration(
             filled: true,
-            fillColor: greyColor,
+            fillColor: Colors.grey,
             contentPadding: EdgeInsets.symmetric(
               horizontal: 18,
               vertical: 12.5,
@@ -59,12 +53,12 @@ class CustomDropdownField extends StatelessWidget {
             return DropdownMenuItem(
               child: Text(
                 permit,
-                style: semiBlackFont.copyWith(fontSize: 15),
+                style: TextStyle(fontWeight: FontWeight.bold),
               ),
               value: permit,
             );
           }).toList(),
-          onChanged: onChanged,
+          onChanged: null,
         ),
       ],
     );

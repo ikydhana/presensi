@@ -1,4 +1,7 @@
-part of 'screens.dart';
+// part of 'screens.dart';
+
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class MainScreen extends StatefulWidget {
   @override
@@ -8,44 +11,40 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  int bottomNavBarIndex;
-  PageController pageController;
+  int bottomNavBarIndex = 0;
+  // PageController pageController;
 
   @override
   void initState() { 
     super.initState();
     
     bottomNavBarIndex = 0;
-    pageController = PageController(initialPage: bottomNavBarIndex);
+    // pageController = PageController(initialPage: bottomNavBarIndex);
   }
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
+    // SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
 
     return Scaffold(
       body: Stack(
         children: [
           Container(
-            color: primaryColor,
+            color: Colors.blue,
           ),
           SafeArea(
             child: Stack(
               children: [
                 Container(
-                  color: screenColor,
+                  color: Colors.blue,
                 ),
                 PageView(
-                  controller: pageController,
+                  // controller: pageController,
                   onPageChanged: (index) {
                     setState(() {
                       bottomNavBarIndex = index;
                     });
-                  },
-                  children: [
-                    DashboardView(),
-                    PresenceView(),
-                  ],
+                  }
                 ),
                 bottomNavBar(),
               ],
@@ -76,7 +75,7 @@ class _MainScreenState extends State<MainScreen> {
           onTap: (index) {
             setState(() {
               bottomNavBarIndex = index;
-              pageController.jumpToPage(index);
+              // pageController.jumpToPage(index);
             });
           },
           items: [

@@ -1,10 +1,9 @@
 
-
+import 'package:presensi/widgets/widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:presensi/widgets/widgets.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -39,9 +38,8 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             SafeArea(
               child: SingleChildScrollView(
-                padding: EdgeInsets.symmetric(horizontal: defaultMargin),
-                child: Consumer<ValidationProvider>(
-                  builder: (context, validation, _) => Column(
+                padding: EdgeInsets.symmetric(horizontal: 100),
+                child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       SizedBox(
@@ -132,7 +130,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         textColor: whiteColor,
                         color: (isValidEmail && isValidPassword) ? primaryColor : Color(0xFFCDCBCB),
                         onPressed: (isValidEmail && isValidPassword) ? () async {
-                          
+
                           /// Set isLogining be 'true' to show loading wave
                           setState(() {
                             isLogining = true;
@@ -146,7 +144,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           );
 
-                          /// Checking if user failed or success to check 
+                          /// Checking if user failed or success to check
                           /// (it will receive response message if failed)
                           if (result.user == null) {
                             setState(() {
@@ -165,7 +163,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             /// Reset validation state
                             validation.resetChange();
                           }
-                          
+
                         } : null,
                       ),
                       SizedBox(

@@ -8,7 +8,7 @@ class CustomDatePicker extends StatelessWidget {
   final Color iconColor;
   final Function onTap;
 
-  CustomDatePicker({this.labelText, this.hintText, this.errorValidation, this.hintColor, this.iconColor, this.onTap});
+  CustomDatePicker({required this.labelText, required this.hintText, required this.errorValidation, required this.hintColor, required this.iconColor, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -20,14 +20,11 @@ class CustomDatePicker extends StatelessWidget {
           children: [
             Text(
               labelText,
-              style: semiBlackFont.copyWith(fontSize: 16),
+              style: TextStyle(fontWeight: FontWeight.bold),
             ),
             if (errorValidation != null) Text(
               errorValidation,
-              style: semiBlackFont.copyWith(
-                color: maroonColor,
-                fontSize: 12,
-              ),
+              style: TextStyle(fontWeight: FontWeight.bold),
             ),
           ],
         ),
@@ -38,13 +35,12 @@ class CustomDatePicker extends StatelessWidget {
           borderRadius: BorderRadius.circular(8),
           child: Ink(
             decoration: BoxDecoration(
-              color: greyColor,
+              color: Colors.grey,
               borderRadius: BorderRadius.circular(8),
             ),
             child: InkWell(
-              onTap: onTap,
               child: Container(
-                width: defaultWidth(context),
+                width: 10,
                 padding: EdgeInsets.symmetric(
                   horizontal: 18,
                   vertical: 12.5,
@@ -57,10 +53,7 @@ class CustomDatePicker extends StatelessWidget {
                   children: [
                     Text(
                       hintText,
-                      style: semiBlackFont.copyWith(
-                        fontSize: 15,
-                        color: hintColor,
-                      ),
+                      style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                     FaIcon(
                       FontAwesomeIcons.solidCalendar,
