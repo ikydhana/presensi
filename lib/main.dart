@@ -2,13 +2,15 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:go_absensi/services/services.dart';
+import 'package:presensi/services/services.dart';
 import 'package:provider/provider.dart';
-import 'package:go_absensi/common/common.dart';
-import 'package:go_absensi/screens/screens.dart';
-import 'package:go_absensi/utils/utils.dart';
-import 'package:go_absensi/provider/provider.dart';
+import 'package:presensi/common/common.dart';
+import 'package:presensi/screens/screens.dart';
+import 'package:presensi/utils/utils.dart';
+import 'package:presensi/provider/provider.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
+
+void main() => runApp(presensi());
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,7 +20,7 @@ void main() async {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class presensi extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     FirebaseAnalytics analytics = FirebaseAnalytics();
@@ -32,7 +34,7 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(create: (_) => HistoryProvider()),
         ],
         child: MaterialApp(
-          title: "GoAbsensi",
+          title: "Presensi",
           home: SplashScreen(),
           theme: appTheme,
           routes: appRoute,
@@ -45,3 +47,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+

@@ -81,15 +81,8 @@ class _MainScreenState extends State<MainScreen> {
           },
           items: [
             BottomNavigationBarItem(
-              title: Text(
-                "Dashboard",
-                style: (bottomNavBarIndex == 0) ? boldBlackFont.copyWith(
-                  color: primaryColor,
-                  fontSize: 12,
-                ) : semiBlackFont.copyWith(
-                  color: Color(0xFFCDCBCB),
-                  fontSize: 12,
-                ),
+              label: (
+                'Dashboard'
               ),
               icon: Container(
                 margin: EdgeInsets.only(bottom: 4),
@@ -102,15 +95,8 @@ class _MainScreenState extends State<MainScreen> {
               ),
             ),
             BottomNavigationBarItem(
-              title: Text(
-                "Kehadiran",
-                style: (bottomNavBarIndex == 1) ? boldBlackFont.copyWith(
-                  color: primaryColor,
-                  fontSize: 12,
-                ) : semiBlackFont.copyWith(
-                  color: Color(0xFFCDCBCB),
-                  fontSize: 12,
-                ),
+              label: (
+                'Kehadiran'
               ),
               icon: Container(
                 margin: EdgeInsets.only(bottom: 4),
