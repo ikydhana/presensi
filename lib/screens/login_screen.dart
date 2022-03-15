@@ -1,5 +1,5 @@
 
-
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -24,14 +24,10 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
 
-    final isValidEmail = "";
-    final isValidPassword = "";
+    final isValidEmail = "1";
+    final isValidPassword = "2";
 
-    return WillPopScope(
-      onWillPop: () async {
-        return;
-      },
-      child: Scaffold(
+    return Scaffold(
         body: Stack(
           children: [
             Container(
@@ -98,10 +94,11 @@ class _LoginScreenState extends State<LoginScreen> {
                         obscureText: !isHidePassword,
                         labelText: "Password",
                         hintText: "Masukan Password",
+                        keyboardType: TextInputType.visiblePassword,
                         controller: passwordController,
-                        errorValidation: validation.errorPassword,
+                        errorValidation: 'Harap password diisi',
                         onChanged: (text) {
-                          validation.changePassword(text);
+
                         },
                         suffixIcon: GestureDetector(
                           onTap: () {
@@ -121,55 +118,56 @@ class _LoginScreenState extends State<LoginScreen> {
                               color: Color(0xFFC6C6C6),
                             ),
                           )
-                        ),
+                        ), maxLines: 10,
                       ),
                       SizedBox(
                         height: 30,
                       ),
                       if (isLogining) SpinKitWave(
-                        color: primaryColor,
+                        color: Colors.blue,
                         size: 50,
                       )
                       else CustomRaisedButton(
                         "Login",
-                        textColor: whiteColor,
-                        color: (isValidEmail && isValidPassword) ? primaryColor : Color(0xFFCDCBCB),
-                        onPressed: (isValidEmail && isValidPassword) ? () async {
-                          
-                          /// Set isLogining be 'true' to show loading wave
-                          setState(() {
-                            isLogining = true;
-                          });
-
-                          /// Call auth services to check auth data
-                          ResponseHandler result = await AuthServices.logIn(
-                            Auth(
-                              email: emailController.text,
-                              password: passwordController.text,
-                            ),
-                          );
-
-                          /// Checking if user failed or success to check 
-                          /// (it will receive response message if failed)
-                          if (result.user == null) {
-                            setState(() {
-                              isLogining = false;
-                            });
-
-                            showAlert(
-                              context,
-                              alert: CustomAlertDialog(
-                                title: generateAuthMessage(result.message).title,
-                                description: generateAuthMessage(result.message).message,
-                                imagePath: generateAuthMessage(result.message).illustration,
-                              ),
-                            );
-                          } else {
-                            /// Reset validation state
-                            validation.resetChange();
-                          }
-                          
-                        } : null,
+                        textColor: Colors.white,
+                        color: Color(0xFFCDCBCB),
+                        onPressed: (){},
+                        // onPressed: (isValidEmail && isValidPassword) ? () async {
+                        //
+                        //   /// Set isLogining be 'true' to show loading wave
+                        //   setState(() {
+                        //     isLogining = true;
+                        //   });
+                        //
+                        //   /// Call auth services to check auth data
+                        //   ResponseHandler result = await AuthServices.logIn(
+                        //     Auth(
+                        //       email: emailController.text,
+                        //       password: passwordController.text,
+                        //     ),
+                        //   );
+                        //
+                        //   /// Checking if user failed or success to check
+                        //   /// (it will receive response message if failed)
+                        //   if (result.user == null) {
+                        //     setState(() {
+                        //       isLogining = false;
+                        //     });
+                        //
+                        //     showAlert(
+                        //       context,
+                        //       alert: CustomAlertDialog(
+                        //         title: generateAuthMessage(result.message).title,
+                        //         description: generateAuthMessage(result.message).message,
+                        //         imagePath: generateAuthMessage(result.message).illustration,
+                        //       ),
+                        //     );
+                        //   } else {
+                        //     /// Reset validation state
+                        //     validation.resetChange();
+                        //   }
+                        //
+                        // } : null,
                       ),
                       SizedBox(
                         height: 110,
@@ -185,14 +183,14 @@ class _LoginScreenState extends State<LoginScreen> {
                                 style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
                               ),
-                              onTap: () {
-                                validation.resetChange();
-                                Navigator.pushNamed(context, RegisterScreen.routeName, 
-                                  arguments: RouteArgument(auth: Auth()),
-                                );
-                              },
+                              // onTap: () {
+                              //   validation.resetChange();
+                              //   Navigator.pushNamed(context, RegisterScreen.routeName,
+                              //     arguments: RouteArgument(auth: Auth()),
+                              //   );
+                              // },
                             ),
-                          ),
+
                           SizedBox(
                             width: 16,
                           ),
@@ -204,32 +202,32 @@ class _LoginScreenState extends State<LoginScreen> {
                                 style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
                               ),
-                              onTap: () async {
-                                if (emailController.text == "") {
-                                  Fluttertoast.showToast(
-                                    msg: "Masukan Email Anda Terlebih Dahulu",
-                                  );
-                                } else {
-                                  ResponseHandler result = await AuthServices.resetPassword(emailController.text);
-
-                                  if (result.message != null) {
-                                    showAlert(
-                                      context,
-                                      alert: CustomAlertDialog(
-                                        title: generateAuthMessage(result.message).title,
-                                        description: generateAuthMessage(result.message).message,
-                                        imagePath: generateAuthMessage(result.message).illustration,
-                                      ),
-                                    );
-                                  } else {
-                                    Fluttertoast.showToast(
-                                      msg: "Silahkan Periksa Inbox Email Anda",
-                                    );
-                                  }
-                                }
-                              },
+                              // onTap: () async {
+                              //   if (emailController.text == "") {
+                              //     Fluttertoast.showToast(
+                              //       msg: "Masukan Email Anda Terlebih Dahulu",
+                              //     );
+                              //   } else {
+                              //     ResponseHandler result = await AuthServices.resetPassword(emailController.text);
+                              //
+                              //     if (result.message != null) {
+                              //       showAlert(
+                              //         context,
+                              //         alert: CustomAlertDialog(
+                              //           title: generateAuthMessage(result.message).title,
+                              //           description: generateAuthMessage(result.message).message,
+                              //           imagePath: generateAuthMessage(result.message).illustration,
+                              //         ),
+                              //       );
+                              //     } else {
+                              //       Fluttertoast.showToast(
+                              //         msg: "Silahkan Periksa Inbox Email Anda",
+                              //       );
+                              //     }
+                              //   }
+                              // },
                             ),
-                          ),
+
                         ],
                       ),
                       SizedBox(
@@ -246,10 +244,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
               ),
-            ),
+            // ),
           ],
         ),
-      ),
+      // ),
     );
   }
 }
