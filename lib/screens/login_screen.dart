@@ -3,6 +3,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:presensi/widgets/widgets.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -22,8 +24,8 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
 
-    final isValidEmail = Provider.of<ValidationProvider>(context).errorEmail == "";
-    final isValidPassword = Provider.of<ValidationProvider>(context).errorPassword == "";
+    final isValidEmail = "";
+    final isValidPassword = "";
 
     return WillPopScope(
       onWillPop: () async {
@@ -177,9 +179,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               splashColor: Colors.black.withOpacity(0.3),
                               child: Text(
                                 "Buat Akun",
-                                style: semiGreyFont.copyWith(
-                                  fontSize: 14,
-                                  color: primaryColor,
+                                style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
                               ),
                               onTap: () {
@@ -198,9 +198,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               splashColor: Colors.black.withOpacity(0.3),
                               child: Text(
                                 "Ganti Password",
-                                style: semiGreyFont.copyWith(
-                                  fontSize: 14,
-                                  color: primaryColor,
+                                style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
                               ),
                               onTap: () async {
