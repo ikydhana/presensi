@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-// import 'package:presensi/screens/screens.dart';
-
 
 
 
@@ -16,7 +14,7 @@ class Presensi extends StatelessWidget {
     return
         MaterialApp(
           title: "Presensi",
-          home: Presensi(),
+          //home: SplashScreen(),
     );
   }
 }

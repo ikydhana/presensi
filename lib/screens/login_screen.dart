@@ -1,9 +1,10 @@
 
-import 'package:presensi/widgets/widgets.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:presensi/widgets/widgets.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -38,7 +39,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             SafeArea(
               child: SingleChildScrollView(
-                padding: EdgeInsets.symmetric(horizontal: 100),
+                padding: EdgeInsets.symmetric(horizontal: 10),
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
@@ -81,10 +82,14 @@ class _LoginScreenState extends State<LoginScreen> {
                         hintText: "Masukan Email",
                         keyboardType: TextInputType.emailAddress,
                         controller: emailController,
-                        errorValidation: validation.errorEmail,
+                        errorValidation: 'Harus format email',
                         onChanged: (text) {
-                          validation.changeEmail(text);
+
                         },
+                        maxLines: 10,
+                        suffixIcon: Icon(Icons.visibility,
+                          size: 20
+                        ),
                       ),
                       SizedBox(
                         height: 16,
@@ -130,7 +135,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         textColor: whiteColor,
                         color: (isValidEmail && isValidPassword) ? primaryColor : Color(0xFFCDCBCB),
                         onPressed: (isValidEmail && isValidPassword) ? () async {
-
+                          
                           /// Set isLogining be 'true' to show loading wave
                           setState(() {
                             isLogining = true;
@@ -144,7 +149,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           );
 
-                          /// Checking if user failed or success to check
+                          /// Checking if user failed or success to check 
                           /// (it will receive response message if failed)
                           if (result.user == null) {
                             setState(() {
@@ -163,7 +168,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             /// Reset validation state
                             validation.resetChange();
                           }
-
+                          
                         } : null,
                       ),
                       SizedBox(
