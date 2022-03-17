@@ -35,7 +35,7 @@ class CustomTextField extends StatelessWidget {
           children: [
             Text(
               labelText,
-              style: semiBlackFont.copyWith(fontSize: 16),
+              //style: semiBlackFont.copyWith(fontSize: 16),
             ),
             if (errorValidation != null) Text(
               errorValidation,

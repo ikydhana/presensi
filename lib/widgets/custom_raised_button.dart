@@ -10,7 +10,7 @@ class CustomRaisedButton extends StatelessWidget {
 
   CustomRaisedButton(
     this.text, {
-    this.width = 10,
+    this.width = 100,
     this.height = 48,
     required this.color,
     required this.textColor,

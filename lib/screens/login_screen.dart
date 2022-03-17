@@ -19,13 +19,17 @@ class _LoginScreenState extends State<LoginScreen> {
 
   bool isHidePassword = false;
   bool isLogining = false;
+  // bool isValidEmail = true;
+  // bool isValidPassword = true;
 
   @override
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
 
-    final isValidEmail = "1";
-    final isValidPassword = "2";
+    // final isValidEmail = "1";
+    // final isValidPassword = "2";
+    bool isValidEmail = true;
+    bool isValidPassword = true;
 
     return Scaffold(
         body: Stack(
@@ -49,11 +53,11 @@ class _LoginScreenState extends State<LoginScreen> {
                             width: 60,
                             height: 60,
                             margin: EdgeInsets.only(right: 14),
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: AssetImage("assets/images/primary_logo.png"),
-                              ),
-                            ),
+                            // decoration: BoxDecoration(
+                            //   image: DecorationImage(
+                            //     image: AssetImage("assets/images/primary_logo.png"),
+                            //   ),
+                            // ),
                           ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -82,14 +86,14 @@ class _LoginScreenState extends State<LoginScreen> {
                         onChanged: (text) {
 
                         },
-                        maxLines: 10,
-                        suffixIcon: Icon(Icons.visibility,
+                        maxLines: 1,
+                        suffixIcon: Icon(Icons.email,
                           size: 20
                         ),
                       ),
                       SizedBox(
                         height: 16,
-                      ),
+                       ),
                       CustomTextField(
                         obscureText: !isHidePassword,
                         labelText: "Password",
@@ -118,26 +122,27 @@ class _LoginScreenState extends State<LoginScreen> {
                               color: Color(0xFFC6C6C6),
                             ),
                           )
-                        ), maxLines: 10,
+                        ), maxLines: 1,
                       ),
                       SizedBox(
                         height: 30,
                       ),
                       if (isLogining) SpinKitWave(
-                        color: Colors.blue,
+                        color: Colors.white,
                         size: 50,
                       )
                       else CustomRaisedButton(
                         "Login",
+                        width: 200,
                         textColor: Colors.white,
                         color: Color(0xFFCDCBCB),
-                        onPressed: (){},
-                        // onPressed: (isValidEmail && isValidPassword) ? () async {
-                        //
-                        //   /// Set isLogining be 'true' to show loading wave
-                        //   setState(() {
-                        //     isLogining = true;
-                        //   });
+                        //onPressed: () {},
+                        onPressed: (isValidEmail && isValidPassword) ? () async {
+
+                          /// Set isLogining be 'true' to show loading wave
+                          setState(() {
+                            isLogining = true;
+                          });
                         //
                         //   /// Call auth services to check auth data
                         //   ResponseHandler result = await AuthServices.logIn(
@@ -167,7 +172,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         //     validation.resetChange();
                         //   }
                         //
-                        // } : null,
+                         } : (){
+
+                        }
                       ),
                       SizedBox(
                         height: 110,

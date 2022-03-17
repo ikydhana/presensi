@@ -61,7 +61,7 @@ class _MainScreenState extends State<MainScreen> {
       child: Container(
         height: 70,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Colors.black26,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(16),
             topRight: Radius.circular(16),
@@ -87,8 +87,8 @@ class _MainScreenState extends State<MainScreen> {
                 margin: EdgeInsets.only(bottom: 4),
                 height: 24,
                 child: Image.asset(
-                  (bottomNavBarIndex == 0) 
-                  ? "assets/images/dashboard_active.png" 
+                  (bottomNavBarIndex == 0)
+                  ? "assets/images/dashboard_active.png"
                   : "assets/images/dashboard_inactive.png",
                 ),
               ),
@@ -101,8 +101,8 @@ class _MainScreenState extends State<MainScreen> {
                 margin: EdgeInsets.only(bottom: 4),
                 height: 24,
                 child: Image.asset(
-                  (bottomNavBarIndex == 1) 
-                  ? "assets/images/list_active.png" 
+                  (bottomNavBarIndex == 1)
+                  ? "assets/images/list_active.png"
                   : "assets/images/list_inactive.png",
                 ),
               ),
